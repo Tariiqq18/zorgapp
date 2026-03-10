@@ -21,4 +21,16 @@ public class Medication {
     public String toString() {
         return name + " | Dosage: " + dosage;
     }
+
+
+
+
+
+
+
 }
+
+
+
+
+

@@ -175,7 +175,7 @@ class Administration {
                         break;
 
                     default:
-                        System.out.println("Please enter a valid menu number.");
+                        System.out.println("Test");
                         break;
                 }
             }
