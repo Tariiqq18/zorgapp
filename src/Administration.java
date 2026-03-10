@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
+
 
 class Administration {
     static final int STOP = 0;
@@ -124,14 +124,6 @@ class Administration {
                         break;
 
                     case EDIT:
-                     /**   scanner.nextLine();
-                        System.out.println("New Surname: ");
-                        currentPatient.setSurname(scanner.nextLine());
-
-                        scanner.nextLine();
-                        System.out.println("New First name: ");
-                        currentPatient.setFirstname(scanner.nextLine());      <-- Namen aanpassen (klinkt onlogisch **/
-
                         scanner.nextLine();
                         System.out.println("New weight: ");
                         currentPatient.setWeight(scanner.nextDouble());

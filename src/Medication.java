@@ -1,6 +1,6 @@
 public class Medication {
 
-    private String name;
+    private final String name;
     private String dosage;
 
 
