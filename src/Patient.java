@@ -80,6 +80,21 @@ class Patient {
         System.out.println("Medication not found ");
     }
 
+    public void removeMedication(String name) {
+
+        for (Medication m : medications) {
+            if (m.getName().equalsIgnoreCase(name)) {
+
+                medications.remove(m);
+                System.out.println("Medication has been Removed.");
+                return;
+
+            }
+        }
+
+        System.out.println("This Medication has not been found.");
+    }
+
     public void showMedications() {
         if (medications.isEmpty()) {
             System.out.println("No medications Registered for " + fullName());
