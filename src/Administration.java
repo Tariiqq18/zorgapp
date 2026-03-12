@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
+
 
 class Administration {
     static final int STOP = 0;
@@ -11,8 +11,9 @@ class Administration {
     static final int EDIT = 3;
     static final int ADDMED = 4;
     static final int UPDATEDOSAGE = 5;
-    static final int SHOWMEDS = 6;
-    static final int ENTERID = 7;
+    static final int REMOVEMED = 6;
+    static final int SHOWMEDS = 7;
+    static final int ENTERID = 8;
 
     Patient currentPatient;            // The currently selected patient
     User currentUser;               // the current user of the program.
@@ -73,6 +74,7 @@ class Administration {
             System.out.format("%d:  Edit patient data\n", EDIT);
             System.out.format("%d:  Add medication\n", ADDMED);
             System.out.format("%d:  Update medication dosage\n", UPDATEDOSAGE);
+            System.out.format("%d:  Remove medication\n", REMOVEMED);
             System.out.format("%d:  Show medications\n", SHOWMEDS);
             System.out.format("%d:  Enter patient ID\n", ENTERID);
             System.out.print("enter #choice: ");
@@ -124,14 +126,6 @@ class Administration {
                         break;
 
                     case EDIT:
-                     /**   scanner.nextLine();
-                        System.out.println("New Surname: ");
-                        currentPatient.setSurname(scanner.nextLine());
-
-                        scanner.nextLine();
-                        System.out.println("New First name: ");
-                        currentPatient.setFirstname(scanner.nextLine());      <-- Namen aanpassen (klinkt onlogisch **/
-
                         scanner.nextLine();
                         System.out.println("New weight: ");
                         currentPatient.setWeight(scanner.nextDouble());
@@ -168,6 +162,16 @@ class Administration {
                         System.out.println("New dosage:");
                         String newDosage = scanner.nextLine();
                         currentPatient.updateMedicationDosage(medName, newDosage);
+                        break;
+
+
+                    case REMOVEMED:
+                        scanner.nextLine();
+
+                        System.out.println("Medication to be removed: ");
+                        String medNameDelete = scanner.nextLine();
+
+                        currentPatient.removeMedication(medNameDelete);
                         break;
 
                     case SHOWMEDS:

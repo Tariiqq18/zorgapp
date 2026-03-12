@@ -1,6 +1,6 @@
 public class Medication {
 
-    private String name;
+    private final String name;
     private String dosage;
 
 
@@ -21,4 +21,16 @@ public class Medication {
     public String toString() {
         return name + " | Dosage: " + dosage;
     }
+
+
+
+
+
+
+
 }
+
+
+
+
+
