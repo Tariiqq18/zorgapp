@@ -16,8 +16,7 @@ class Patient {
     private double weight;
     private double height;
 
-    private final List<Medication> medications = new ArrayList<>();
-
+    private MedicationManager medicationManager = new MedicationManager();
     /**
      * Constructor
      */
@@ -65,45 +64,8 @@ class Patient {
         this.height = height;
     }
 
-    public void addMedication(String name, String dosage) {
-        medications.add(new Medication(name, dosage));
-    }
 
-    public void updateMedicationDosage(String name, String newDosage) {
-        for (Medication m : medications) {
-            if (m.getName().equalsIgnoreCase(name)) {
-                m.setDosage(newDosage);
-                System.out.println("Dosage updated for " + name);
-                return;
-            }
-        }
-        System.out.println("Medication not found ");
-    }
 
-    public void removeMedication(String name) {
-
-        for (Medication m : medications) {
-            if (m.getName().equalsIgnoreCase(name)) {
-
-                medications.remove(m);
-                System.out.println("Medication has been Removed.");
-                return;
-
-            }
-        }
-
-        System.out.println("This Medication has not been found.");
-    }
-
-    public void showMedications() {
-        if (medications.isEmpty()) {
-            System.out.println("No medications Registered for " + fullName());
-            return;
-        }
-        for (Medication m : medications) {
-            System.out.println(m);
-        }
-    }
 
     /**
      * Display patient data.
@@ -127,5 +89,29 @@ class Patient {
      */
     String fullName() {
         return String.format("%s %s [%s]", firstName, surname, dateOfBirth.toString());
+    }
+
+    public MedicationManager getMedicationManager() {
+        return medicationManager;
+    }
+
+    public void setMedicationManager(MedicationManager medicationManager) {
+        this.medicationManager = medicationManager;
+    }
+
+    public void addMedication(String name, String dosage) {
+        medicationManager.addMedication(name, dosage);
+    }
+
+    public void updateMedicationDosage(String name, String newDosage) {
+        medicationManager.updateMedicationDosage(name, newDosage);
+    }
+
+    public void removeMedication(String name) {
+        medicationManager.removeMedication(name);
+    }
+
+    public void showMedications() {
+        medicationManager.showMedications();
     }
 }

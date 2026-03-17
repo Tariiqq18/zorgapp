@@ -1,9 +1,6 @@
 public class Medication {
-
     private final String name;
     private String dosage;
-
-
 
     public Medication(String name, String dosage) {
         this.name = name;
@@ -13,6 +10,7 @@ public class Medication {
     public String getName() {
         return name;
     }
+
     public void setDosage(String dosage) {
         this.dosage = dosage;
     }
@@ -21,16 +19,4 @@ public class Medication {
     public String toString() {
         return name + " | Dosage: " + dosage;
     }
-
-
-
-
-
-
-
 }
-
-
-
-
-
