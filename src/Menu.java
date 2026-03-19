@@ -70,7 +70,7 @@ class Menu {
                             admin.currentPatient = selected;
                             System.out.println("Patient selected.");
                         } else {
-                            System.out.println("Pat ient ID not found.");
+                            System.out.println("Patient ID not found.");
                         }
                         break;
 
@@ -110,11 +110,20 @@ class Menu {
 
                         System.out.println("New dosage:");
                         String newDosage = scanner.nextLine();
-                        admin.currentPatient.updateMedicationDosage(medName, newDosage);
+
+                       if (!admin.currentUser.getRole().canUpdateMedication()) {
+                           System.out.println("Geen toestemming om dosering aan te passen");
+                       } else {
+                           admin.currentPatient.updateMedicationDosage(medName, newDosage);
+                       }
                         break;
 
 
                     case REMOVEMED:
+                        if (!admin.currentUser.getRole().canUpdateMedication()) {
+                            System.out.println("Geen toestemming om medicatie te verwijderen. ");
+                            break;
+                        }
                         scanner.nextLine();
 
                         System.out.println("Medication to be removed: ");

@@ -3,7 +3,7 @@ class User {
   private  int userID;
   private UserRoles role;
 
-    public User(int UserID, String userName) {
+    public User(int UserID, String userName, UserRoles role) {
         this.userID = UserID;
         this.userName = userName;
         this.role = role;

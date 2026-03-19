@@ -80,8 +80,8 @@ public class Patient {
         System.out.format("%-17s %.2f\n", "Height(M):", height);
         System.out.format("%-17s %.2f\n", "BMI:", getBMI());
 
-        System.out.println("Medications: ");
-        showMedications();
+        /** System.out.println("Medications: ");
+        showMedications(); **/
     }
 
     /**
