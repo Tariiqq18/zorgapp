@@ -40,5 +40,18 @@ public class MedicationManager {
         for (Medication m : medications) {
             System.out.println(m);
         }
+
     }
+
+    public void showPainkillers() {
+        for (Medication m : medications) {
+            if (m.getName().toLowerCase().contains("paracetamol") ||
+                    m.getName().toLowerCase().contains("ibuprofen")) {
+                System.out.println(m);
+            }
+
+        }
+    }
+
+
 }

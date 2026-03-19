@@ -124,7 +124,16 @@ class Menu {
                         break;
 
                     case SHOWMEDS:
+                    UserRoles role = admin.currentUser.getRole();
+
+                    if (role == UserRoles.TANDARTS) {
+                        System.out.println("U heeft geen toegang tot medicatie. ");
+                    } else if (role.canViewPainkillersOnly()) {
+                        System.out.println("Pijnstillers zichtbaar. ");
+                    }
+                    else {
                         admin.currentPatient.showMedications();
+                    }
                         break;
 
                     default:

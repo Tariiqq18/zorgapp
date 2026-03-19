@@ -114,4 +114,8 @@ public class Patient {
     public void showMedications() {
         medicationManager.showMedications();
     }
+    public void showPainkillers() {
+        medicationManager.showPainkillers();
+    }
+
 }
