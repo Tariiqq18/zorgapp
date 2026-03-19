@@ -3,7 +3,7 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-class Patient {
+public class Patient {
    static final int RETURN      = 0;
    static final int SURNAME     = 1;
    static final int FIRSTNAME   = 2;
