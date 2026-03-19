@@ -9,7 +9,7 @@ class Administration {
     Administration(User user) {
         currentUser = user;
 
-        currentPatient = patientManager.getPatientById(10002); // default patient is the first one in the list
+        currentPatient = patientManager.getPatientById(10001); // default patient is the first one in the list
         System.out.format("Current user: [%d] %s\n", user.getUserID(), user.getUserName());
     }
 }

@@ -70,7 +70,7 @@ class Menu {
                             admin.currentPatient = selected;
                             System.out.println("Patient selected.");
                         } else {
-                            System.out.println("Patient ID not found.");
+                            System.out.println("Pat ient ID not found.");
                         }
                         break;
 
