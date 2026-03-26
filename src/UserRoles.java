@@ -6,15 +6,16 @@ public enum UserRoles {
         TANDARTS;
 
         public boolean canViewMedication() {
-            return this == HUISARTS || this == APOTHEKER;
+            return this != TANDARTS;
         }
         public boolean canAddMedication() {
                 return this == HUISARTS || this == APOTHEKER;
         }
         public boolean canUpdateMedication() {
-                return this == APOTHEKER;
+                return this == HUISARTS;
         }
         public boolean canViewPainkillersOnly() {
+
                 return this == FYSIOTHERAPEUT;
         }
 }

@@ -22,14 +22,17 @@ public class MedicationManager {
     }
 
     public void removeMedication(String name) {
-        for (Medication m : medications) {
+        var iterator = medications.iterator();
+
+        while (iterator.hasNext()) {
+            Medication m = iterator.next();
             if (m.getName().equalsIgnoreCase(name)) {
-                medications.remove(m);
-                System.out.println("Medication has been Removed.");
+                iterator.remove();
+                System.out.println("Medication has been removed");
                 return;
             }
         }
-        System.out.println("This Medication has not been found.");
+        System.out.println("Medication not found :( ");
     }
 
     public void showMedications() {
@@ -45,8 +48,7 @@ public class MedicationManager {
 
     public void showPainkillers() {
         for (Medication m : medications) {
-            if (m.getName().toLowerCase().contains("paracetamol") ||
-                    m.getName().toLowerCase().contains("ibuprofen")) {
+            if (m.isPainKiller()) {
                 System.out.println(m);
             }
 
