@@ -15,6 +15,12 @@ public class Medication {
         this.dosage = dosage;
     }
 
+    public boolean isPainKiller() {
+        return name.equalsIgnoreCase("paracetamol") ||
+                name.equalsIgnoreCase("ibuprofen") ||
+                name.equalsIgnoreCase("Diclofenac");
+    }
+
     @Override
     public String toString() {
         return name + " | Dosage: " + dosage;
