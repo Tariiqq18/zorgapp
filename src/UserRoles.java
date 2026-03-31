@@ -15,7 +15,12 @@ public enum UserRoles {
                 return this == HUISARTS;
         }
         public boolean canViewPainkillersOnly() {
-
                 return this == FYSIOTHERAPEUT;
+        }
+        public boolean canWriteConsult() {
+                return this == HUISARTS || this == FYSIOTHERAPEUT;
+        }
+        public boolean canViewConsults() {
+                return this == HUISARTS || this == FYSIOTHERAPEUT;
         }
 }

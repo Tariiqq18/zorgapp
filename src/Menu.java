@@ -150,6 +150,27 @@
                             }
                             break;
 
+                        case ADDCONSULT:
+                            if (!admin.currentUser.getRole().canWriteConsult()) {
+                                System.out.println("Geen toestemming om consult te schrijven.");
+                                break;
+                            }
+                            scanner.nextLine();
+
+                            System.out.println("Schrijf consult: ");
+                            String note = scanner.nextLine();
+
+                            admin.currentPatient.addConsult(note, admin.currentUser);
+                            break;
+
+                        case SHOWCONSULT:
+                            if (!admin.currentUser.getRole().canViewConsults()) {
+                                System.out.println("Geen toestemming om consulten te bekijken. ");
+                            }
+
+                            admin.currentPatient.showConsult();
+                            break;
+
                         case LOGOUT:
                             System.out.println("Uitgelogd.... ");
                             admin.currentUser = null;

@@ -12,7 +12,7 @@ public class Consult {
         this.date = LocalDate.now();
     }
 
-    @override
+    @Override
     public String toString() {
         return String.format("Datum: %s | Gemaakt door: %s | Notitie: %s",
                 date,
