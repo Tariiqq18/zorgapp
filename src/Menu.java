@@ -9,8 +9,10 @@
         static final int UPDATEDOSAGE = 5;
         static final int REMOVEMED = 6;
         static final int SHOWMEDS = 7;
-        static final int LOGOUT = 8;
-        static final int ENTERID = 9;
+        static final int ADDCONSULT = 8;
+        static final int SHOWCONSULT = 9;
+        static final int LOGOUT = 10;
+        static final int ENTERID = 11;
 
         void runMenu(Administration admin) {
             LoginManager loginmanager =  new LoginManager();
@@ -43,6 +45,8 @@
                 System.out.format("%d:  Update medication dosage\n", UPDATEDOSAGE);
                 System.out.format("%d:  Remove medication\n", REMOVEMED);
                 System.out.format("%d:  Show medications\n", SHOWMEDS);
+                System.out.format("%d:  Add consult\n", ADDCONSULT);
+                System.out.format("%d:  Show consults\n", SHOWCONSULT);
                 System.out.format("%d:  Logout\n", LOGOUT);
                 System.out.format("%d:  Enter patient ID\n", ENTERID);
                 System.out.print("enter #choice: ");

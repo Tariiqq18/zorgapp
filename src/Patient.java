@@ -17,6 +17,7 @@ public class Patient {
     private double height;
 
     private MedicationManager medicationManager = new MedicationManager();
+    private List<Consult> consults = new ArrayList<>();
     /**
      * Constructor
      */
@@ -117,5 +118,17 @@ public class Patient {
     public void showPainkillers() {
         medicationManager.showPainkillers();
     }
+    public void addConsult(String note, User user) {
+        consults.add(new Consult (note, user));
+        System.out.println("Consult toegevoegd. ");
+    }
+    public void showConsult() {
+        if (consults.isEmpty()) {
+            System.out.println("Geen Consulten beschikbaar");
+        }
 
+        for (Consult c : consults) {
+            System.out.println(c);
+        }
+    }
 }
