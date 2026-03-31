@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -65,9 +67,6 @@ public class Patient {
         this.height = height;
     }
 
-
-
-
     /**
      * Display patient data.
      */
@@ -118,17 +117,22 @@ public class Patient {
     public void showPainkillers() {
         medicationManager.showPainkillers();
     }
-    public void addConsult(String note, User user) {
-        consults.add(new Consult (note, user));
+    public void addConsult(String note, User user, boolean sensitive) {
+        consults.add(new Consult (note, user, sensitive));
         System.out.println("Consult toegevoegd. ");
     }
+
     public void showConsult() {
         if (consults.isEmpty()) {
             System.out.println("Geen Consulten beschikbaar");
         }
 
-        for (Consult c : consults) {
-            System.out.println(c);
+        for (Consult consult : consults) {
+
+            if (consult.sensitive) {
+                System.out.println("Test");
+            }
         }
+            System.out.println(consults);
     }
 }

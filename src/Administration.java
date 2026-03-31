@@ -6,7 +6,7 @@ class Administration {
     /**s
      * Constructor
      */
-    Administration(User user) {
+    public Administration(User user) {
         currentUser = user;
 
         currentPatient = patientManager.getPatientById(10001); // default patient is the first one in the list

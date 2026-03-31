@@ -160,7 +160,10 @@
                             System.out.println("Schrijf consult: ");
                             String note = scanner.nextLine();
 
-                            admin.currentPatient.addConsult(note, admin.currentUser);
+                            System.out.println("Is dit gevoelig consult? (true/false)");
+                            boolean sensitive = scanner.nextBoolean();
+
+                            admin.currentPatient.addConsult(note, admin.currentUser, sensitive);
                             break;
 
                         case SHOWCONSULT:

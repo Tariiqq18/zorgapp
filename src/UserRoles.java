@@ -23,4 +23,8 @@ public enum UserRoles {
         public boolean canViewConsults() {
                 return this == HUISARTS || this == FYSIOTHERAPEUT;
         }
+        public boolean canViewSensitiveInfo() {
+                return this == HUISARTS;
+        }
+
 }
