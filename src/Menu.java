@@ -9,16 +9,29 @@
         static final int UPDATEDOSAGE = 5;
         static final int REMOVEMED = 6;
         static final int SHOWMEDS = 7;
-        static final int ENTERID = 8;
+        static final int LOGOUT = 8;
+        static final int ENTERID = 9;
 
         void runMenu(Administration admin) {
+            LoginManager loginmanager =  new LoginManager();
+
             var scanner = new Scanner(System.in);  // User input via this scanner.
 
             boolean nextCycle = true;
             while (nextCycle) {
+
+                if (admin.currentUser == null) {
+                    System.out.println("Geen gebruiker ingelogd. ");
+                    admin.currentUser = loginmanager.login(scanner);
+
+                if (admin.currentUser == null) {
+                    System.out.println("Afsluiten.....");
+                    return;
+                    }
+                }
+
                 System.out.format("%s\n", "=".repeat(80));
                 System.out.format("Current patient: %s\n", admin.currentPatient.fullName());
-
                 /*
                  Print menu on screen
                 */
@@ -30,6 +43,7 @@
                 System.out.format("%d:  Update medication dosage\n", UPDATEDOSAGE);
                 System.out.format("%d:  Remove medication\n", REMOVEMED);
                 System.out.format("%d:  Show medications\n", SHOWMEDS);
+                System.out.format("%d:  Logout\n", LOGOUT);
                 System.out.format("%d:  Enter patient ID\n", ENTERID);
                 System.out.print("enter #choice: ");
 
@@ -52,24 +66,6 @@
 
                         case PATIENTLIST :
                             admin.patientManager.showAllPatients();
-                            break;
-
-                        case ENTERID:
-                            System.out.println("Enter patient ID:");
-
-                            if (!scanner.hasNextInt()) {
-                                System.out.println("Invalid input. Please enter a number.");
-                                scanner.next(); // consume the invalid input
-                                break;
-                            }
-                            int id = scanner.nextInt();
-                            Patient selected = admin.patientManager.getPatientById(id);
-                            if (selected != null) {
-                                admin.currentPatient = selected;
-                                System.out.println("Patient selected.");
-                            } else {
-                                System.out.println("Patient ID not found.");
-                            }
                             break;
 
                         case EDIT:
@@ -121,7 +117,6 @@
                             admin.currentPatient.updateMedicationDosage(medName, newDosage);
                             break;
 
-
                         case REMOVEMED:
                             if (!admin.currentUser.getRole().canUpdateMedication()) {
                                 System.out.println("Geen toestemming om medicatie te verwijderen. ");
@@ -134,6 +129,7 @@
 
                             admin.currentPatient.removeMedication(medNameDelete);
                             break;
+
 
                         case SHOWMEDS:
                             UserRoles role =  admin.currentUser.getRole();
@@ -149,6 +145,39 @@
                                 admin.currentPatient.getMedicationManager().showMedications();
                             }
                             break;
+
+                        case LOGOUT:
+                            System.out.println("Uitgelogd.... ");
+                            admin.currentUser = null;
+
+                            User newUser = loginmanager.login(scanner);
+
+                            if (newUser != null) {
+                                admin.currentUser = newUser;
+                                System.out.println("Ingelogd als: " + newUser.getRole());
+                            } else {
+                                System.out.println("Login mislukt.");
+                            }
+                            break;
+
+                        case ENTERID:
+                            System.out.println("Enter patient ID:");
+
+                            if (!scanner.hasNextInt()) {
+                                System.out.println("Invalid input. Please enter a number.");
+                                scanner.next(); // consume the invalid input
+                                break;
+                            }
+                            int id = scanner.nextInt();
+                            Patient selected = admin.patientManager.getPatientById(id);
+                            if (selected != null) {
+                                admin.currentPatient = selected;
+                                System.out.println("Patient selected.");
+                            } else {
+                                System.out.println("Patient ID not found.");
+                            }
+                            break;
+
 
                         default:
                             System.out.println("Please enter a valid menu number.");
