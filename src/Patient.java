@@ -122,17 +122,17 @@ public class Patient {
         System.out.println("Consult toegevoegd. ");
     }
 
-    public void showConsult() {
+    public void showConsult(UserRoles role) {
         if (consults.isEmpty()) {
             System.out.println("Geen Consulten beschikbaar");
         }
 
         for (Consult consult : consults) {
 
-            if (consult.sensitive) {
-                System.out.println("Test");
+            if (consult.isSensitive() && !role.canViewSensitiveInfo()) {
+                continue;
             }
+            System.out.println(consult);
         }
-            System.out.println(consults);
     }
 }

@@ -160,7 +160,7 @@
                             System.out.println("Schrijf consult: ");
                             String note = scanner.nextLine();
 
-                            System.out.println("Is dit gevoelig consult? (true/false)");
+                            System.out.println("Is dit een gevoelig consult? (true/false)");
                             boolean sensitive = scanner.nextBoolean();
 
                             admin.currentPatient.addConsult(note, admin.currentUser, sensitive);
@@ -169,9 +169,10 @@
                         case SHOWCONSULT:
                             if (!admin.currentUser.getRole().canViewConsults()) {
                                 System.out.println("Geen toestemming om consulten te bekijken. ");
+                                break;
                             }
 
-                            admin.currentPatient.showConsult();
+                            admin.currentPatient.showConsult(admin.currentUser.getRole());
                             break;
 
                         case LOGOUT:
