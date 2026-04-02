@@ -9,8 +9,10 @@
         static final int UPDATEDOSAGE = 5;
         static final int REMOVEMED = 6;
         static final int SHOWMEDS = 7;
-        static final int LOGOUT = 8;
-        static final int ENTERID = 9;
+        static final int ADDCONSULT = 8;
+        static final int SHOWCONSULT = 9;
+        static final int LOGOUT = 10;
+        static final int ENTERID = 11;
 
         void runMenu(Administration admin) {
             LoginManager loginmanager =  new LoginManager();
@@ -43,6 +45,8 @@
                 System.out.format("%d:  Update medication dosage\n", UPDATEDOSAGE);
                 System.out.format("%d:  Remove medication\n", REMOVEMED);
                 System.out.format("%d:  Show medications\n", SHOWMEDS);
+                System.out.format("%d:  Add consult\n", ADDCONSULT);
+                System.out.format("%d:  Show consults\n", SHOWCONSULT);
                 System.out.format("%d:  Logout\n", LOGOUT);
                 System.out.format("%d:  Enter patient ID\n", ENTERID);
                 System.out.print("enter #choice: ");
@@ -146,6 +150,31 @@
                             }
                             break;
 
+                        case ADDCONSULT:
+                            if (!admin.currentUser.getRole().canWriteConsult()) {
+                                System.out.println("Geen toestemming om consult te schrijven.");
+                                break;
+                            }
+                            scanner.nextLine();
+
+                            System.out.println("Schrijf consult: ");
+                            String note = scanner.nextLine();
+
+                            System.out.println("Is dit een gevoelig consult? (true/false)");
+                            boolean sensitive = scanner.nextBoolean();
+
+                            admin.currentPatient.addConsult(note, admin.currentUser, sensitive);
+                            break;
+
+                        case SHOWCONSULT:
+                            if (!admin.currentUser.getRole().canViewConsults()) {
+                                System.out.println("Geen toestemming om consulten te bekijken. ");
+                                break;
+                            }
+
+                            admin.currentPatient.showConsult(admin.currentUser.getRole());
+                            break;
+
                         case LOGOUT:
                             System.out.println("Uitgelogd.... ");
                             admin.currentUser = null;
@@ -177,7 +206,6 @@
                                 System.out.println("Patient ID not found.");
                             }
                             break;
-
 
                         default:
                             System.out.println("Please enter a valid menu number.");

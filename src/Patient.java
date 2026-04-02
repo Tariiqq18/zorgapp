@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class Patient {
     private double height;
 
     private MedicationManager medicationManager = new MedicationManager();
+    private List<Consult> consults = new ArrayList<>();
     /**
      * Constructor
      */
@@ -63,9 +66,6 @@ public class Patient {
     public void setHeight(double height) {
         this.height = height;
     }
-
-
-
 
     /**
      * Display patient data.
@@ -117,5 +117,22 @@ public class Patient {
     public void showPainkillers() {
         medicationManager.showPainkillers();
     }
+    public void addConsult(String note, User user, boolean sensitive) {
+        consults.add(new Consult (note, user, sensitive));
+        System.out.println("Consult toegevoegd. ");
+    }
 
+    public void showConsult(UserRoles role) {
+        if (consults.isEmpty()) {
+            System.out.println("Geen Consulten beschikbaar");
+        }
+
+        for (Consult consult : consults) {
+
+            if (consult.isSensitive() && !role.canViewSensitiveInfo()) {
+                continue;
+            }
+            System.out.println(consult);
+        }
+    }
 }
