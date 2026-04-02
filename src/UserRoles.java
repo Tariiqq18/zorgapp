@@ -18,10 +18,10 @@ public enum UserRoles {
                 return this == FYSIOTHERAPEUT;
         }
         public boolean canWriteConsult() {
-                return this == HUISARTS || this == FYSIOTHERAPEUT;
+                return this != APOTHEKER ;
         }
         public boolean canViewConsults() {
-                return this == HUISARTS || this == FYSIOTHERAPEUT;
+                return this != APOTHEKER;
         }
         public boolean canViewSensitiveInfo() {
                 return this == HUISARTS;

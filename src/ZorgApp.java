@@ -11,7 +11,6 @@ class ZorgApp {
     if (user == null) {
         return;
     }
-
             Administration admin = new Administration(user);
             Menu menu = new Menu();
             menu.runMenu(admin);
