@@ -207,7 +207,6 @@
                             }
                             break;
 
-
                         default:
                             System.out.println("Please enter a valid menu number.");
                             break;

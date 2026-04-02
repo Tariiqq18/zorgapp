@@ -5,17 +5,17 @@ public class Consult {
     private String note;
     private User user;
     private LocalDate date;
-    private boolean sensitive;
+    private boolean isSensitive;
 
-    public Consult(String note, User user, boolean sensitive) {
+    public Consult(String note, User user, boolean isSensitive) {
         this.note = note;
         this.user = user;
         this.date = LocalDate.now();
-        this.sensitive = sensitive;
+        this.isSensitive = isSensitive;
     }
 
     public boolean isSensitive() {
-        return sensitive;
+        return isSensitive;
     }
 
     @Override
